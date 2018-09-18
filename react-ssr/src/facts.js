@@ -1,7 +1,10 @@
-import axios from 'axios';
-export default function getFacts() {
+import axios from 'axios'
+export default function getFacts(where) {
     return axios({
         url: 'http://localhost:8091/facts',
-        method: 'get'
-    }).then(res => res.data);
+        method: 'get',
+        params: {
+            from: where
+        }
+    }).then(res => res.data)
 }

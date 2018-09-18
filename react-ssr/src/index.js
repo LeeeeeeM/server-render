@@ -1,9 +1,14 @@
-import React from 'react';
-import { render } from 'react-dom';
-import App from './App';
-import getFacts from './facts';
+import React from 'react'
+import {
+  render
+} from 'react-dom'
+import App from './App'
+import getFacts from './facts'
 
-getFacts().then(facts => {
-    render(<App facts={facts}/>, document.querySelector('#root'));
-});
-
+setTimeout(() => {
+  getFacts('client').then(facts => {
+      render( <App facts = {facts}
+        />, document.querySelector('#root'))
+      })
+  }, 2000
+)
