@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack": "node_modules/.bin/webpack -p",
+    "watch-client": "webpack -w",
     "babel": "node_modules/.bin/babel src -d dist/src && node_modules/.bin/babel server.js -d dist",
-    "start": "node dist/server.js"
+    "watch-server": "nodemon start.js",
+    "dev": "npm run watch-client & npm run watch-server"
   },
   "author": "",
   "license": "ISC",
@@ -18,13 +19,13 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "express": "^4.16.2",
-    "nodemon": "^1.14.12",
+    "nodemon": "^1.18.4",
     "webpack": "^3.10.0"
   }
 }
