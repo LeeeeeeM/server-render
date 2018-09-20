@@ -1,5 +1,6 @@
+var webpack = require('webpack')
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/client/index.js',
     module: {
         loaders: [
             {
@@ -17,5 +18,10 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: __dirname + '/public/js'
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+          __isBrowser__: "true"
+        })
+    ]
 };

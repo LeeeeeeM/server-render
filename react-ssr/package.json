@@ -5,17 +5,22 @@
   "main": "index.js",
   "scripts": {
     "watch-client": "webpack -w",
-    "babel": "node_modules/.bin/babel src -d dist/src && node_modules/.bin/babel server.js -d dist",
-    "watch-server": "nodemon start.js",
+    "watch-server": "nodemon src/server/start.js",
     "dev": "npm run watch-client & npm run watch-server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^2.2.2",
     "axios": "^0.17.1",
     "cors": "^2.8.4",
+    "koa": "^2.5.3",
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^4.3.1",
     "serialize-javascript": "^1.5.0"
   },
   "devDependencies": {
