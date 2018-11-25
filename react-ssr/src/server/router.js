@@ -37,17 +37,21 @@ router.get('/api/fetchUserRepos', async (context, next) => {
   context.body = repos
 })
 
-router.get('*', async (context, next) => {
-  const matchParams = matchPath(context.path, {path: '/users/:user'}).params
-  console.log(matchParams)
+router.get('/users/:user', async (context, next) => {
+  // const matchParams = matchPath(context.path, {path: '/users/:user'}).params
   const activeRoute = routes.find(route => matchPath(context.path, route)) || {}
   const promise = activeRoute.fetchInitialData ? activeRoute.fetchInitialData : Promise.resolve
   const data = await promise()
+  const info = {
+    from: 'server',
+    time: Date.now()
+  }
   const html = renderToString(
-    <StaticRouter context={{data}} location={context.url}><App data={data} /></StaticRouter>
+    <StaticRouter location={context.url}><App data={data} info={info}/></StaticRouter>
   )
   const finalHtml = indexPage.replace('<!-- :: APP :: -->', html).replace('\'<!-- :: DATA :: -->\'', serialize({
-    data
+    data,
+    info
   }))
   context.set('Cache-Control', 'public, max-age=600, s-maxage=1200')
   context.type = 'text/html'

@@ -5,7 +5,12 @@ import { fetchUserRepos } from './API'
 const routes = [{
   path: '/',
   exact: true,
-  component: Home
+  component: Home,
+  fetchInitialData() {
+    return new Promise(reslove => {
+      resolve()
+    })
+  }
 }, {
   path: '/users/:user',
   component: Grid,
